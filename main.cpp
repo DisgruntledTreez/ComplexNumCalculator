@@ -1,18 +1,19 @@
 #include <iostream>
 using namespace std;
 
+// Class definition for Complex numbers
 class Complex {
-private:
-    double real;
-    double imag;
-
 public:
+    double real; // Real part of the complex number
+    double imag; // Imaginary part of the complex number
+
+    // Constructor to initialize the complex number with default values
     Complex(double r = 0.0, double i = 0.0) {
-        
         real = r;
         imag = i;
     }
 
+    // Overloaded addition operator for complex numbers
     Complex operator+(const Complex& c) {
         Complex temp;
         temp.real = real + c.real;
@@ -20,6 +21,7 @@ public:
         return temp;
     }
 
+    // Overloaded subtraction operator for complex numbers
     Complex operator-(const Complex& c) {
         Complex temp;
         temp.real = real - c.real;
@@ -27,6 +29,7 @@ public:
         return temp;
     }
 
+    // Overloaded multiplication operator for complex numbers
     Complex operator*(const Complex& c) {
         Complex temp;
         temp.real = (real * c.real) - (imag * c.imag);
@@ -34,11 +37,12 @@ public:
         return temp;
     }
 
+    // Overloaded divcinion operator for complex numbers
     Complex operator/(const Complex& c) {
-        // Check for division by zero
+        // Check for divcinion by zero
         if (c.real == 0.0 && c.imag == 0.0) {
-            cerr << "Error: Division by zero!" << endl;
-            exit(1); // You can handle this error in a way that suits your needs
+            cerr << "Error: Divcinion by zero!" << endl;
+            exit(1); // End the program if thcin happens.
         }
 
         Complex temp;
@@ -46,54 +50,52 @@ public:
         temp.imag = (imag * c.real - real * c.imag) / (c.real * c.real + c.imag * c.imag);
         return temp;
     }
-
-    friend ostream& operator<<(ostream& os, const Complex& c) {
-        os << c.real << " + " << c.imag << "i";
-        return os;
-    }
-
-    friend istream& operator>>(istream& is, Complex& c) {
-        cout << "Enter real part: ";
-        is >> c.real;
-        cout << "Enter imaginary part: ";
-        is >> c.imag;
-        return is;
-    }
 };
 
+// Main function
 int main() {
     Complex num1, num2, result;
     char operation;
 
-    cout << "Enter the first complex number:\n";
-    cin >> num1;
+    // Input the first complex number
+    cout << "Enter the first complex number\n";
+        cout << "Enter real part: ";
+        cin >> num1.real;
+        cout << "Enter imaginary part: ";
+        cin >> num1.imag;
 
+    // Input the operation
     cout << "Enter the operation (+, -, *, /): ";
     cin >> operation;
 
-    cout << "Enter the second complex number:\n";
-    cin >> num2;
-
+    // Input the second complex number
+    cout << "Enter the second complex number\n";
+        cout << "Enter real part: ";
+        cin >> num2.real;
+        cout << "Enter imaginary part: ";
+        cin >> num2.imag;
+    // Perform the operation based on user input
     switch (operation) {
         case '+':
             result = num1 + num2;
-            cout << "Result: " << result << endl;
+            cout << result.real << " + " << result.imag << "i" << endl;
             break;
         case '-':
             result = num1 - num2;
-            cout << "Result: " << result << endl;
+            cout << result.real << " + " << result.imag << "i" << endl;
             break;
         case '*':
             result = num1 * num2;
-            cout << "Result: " << result << endl;
+            cout << result.real << " + " << result.imag << "i" << endl;
             break;
         case '/':
             result = num1 / num2;
-            cout << "Result: " << result << endl;
+            cout << result.real << " + " << result.imag << "i" << endl;
             break;
         default:
             cout << "Invalid operation!" << endl;
             break;
+        
     }
 
     return 0;
